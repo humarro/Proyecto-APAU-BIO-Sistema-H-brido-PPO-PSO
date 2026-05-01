@@ -1,11 +1,9 @@
-# Proyecto 1: Sistema Híbrido Bioinspirado (PSO + PPO)
+# Proyecto: Sistema Híbrido Bioinspirado (PSO + PPO)
 
 **Asignatura:** Aprendizaje Automático Bioinspirado (APBIO)  
 **Universidad:** Universidad de Vigo (Curso 2025-2026)
 
-Este repositorio contiene la implementación y los experimentos de un sistema híbrido de Aprendizaje por Refuerzo que acopla Optimización por Enjambre de Partículas (PSO) con Proximal Policy Optimization (PPO), aplicado al entorno de control continuo `MountainCarContinuous-v0` de Gymnasium.
-
-El objetivo del componente bioinspirado (PSO) es inyectar diversidad y exploración global en el bucle de optimización de la política para evitar el colapso prematuro en un entorno caracterizado por recompensas dispersas.
+Este repositorio contiene la implementación y los resultados de un sistema híbrido de Aprendizaje por Refuerzo que acopla Optimización por Enjambre de Partículas (PSO) con Proximal Policy Optimization (PPO), aplicado al entorno de control continuo `MountainCarContinuous-v0` de Gymnasium. El objetivo del componente bioinspirado (PSO) es inyectar diversidad y exploración global en el bucle de optimización de la política para evitar el colapso prematuro en un entorno caracterizado por recompensas dispersas.
 
 ---
 
@@ -28,7 +26,6 @@ Para ejecutar este proyecto, se requiere **Python 3.9 o superior**. Se recomiend
     # En macOS/Linux:
     source venv/bin/activate
     ```
-
 3. Instalar las dependencias requeridas:
     ```bash
     pip install -r requirements.txt
@@ -37,7 +34,7 @@ Para ejecutar este proyecto, se requiere **Python 3.9 o superior**. Se recomiend
 
 El código es completamente autocontenido y el experimento se divide en dos fases: la generación de los datos (entrenamiento) y el análisis de resultados (evaluación y gráficas).
 
-1. **Para ejecutar los experimentos** (Estudio de Ablación y Barridos de Hiperparámetros) a través de las 5 semillas aleatorias independientes, ejecuta el siguiente comando en tu terminal:
+1. **Para ejecutar los experimentos** ejecuta el siguiente comando en tu terminal:
     ```bash
     python PSO_PPO_Hybrid.py
     ```
@@ -48,21 +45,19 @@ El código es completamente autocontenido y el experimento se divide en dos fase
 ## (c) Salida esperada y tiempo de ejecución aproximado
 
 **Tiempo de ejecución aproximado:**  
-El script de entrenamiento simulará múltiples poblaciones a lo largo de diversas semillas y barridos. En un portátil estándar moderno, el tiempo de ejecución estimado es de **1 hora y media a 2 horas en total**. El script de evaluación de resultados (`plot_results.py`) tarda apenas unos segundos en procesar los datos generados.
+El script de entrenamiento simulará múltiples poblaciones a lo largo de diversas semillas y barridos. El tiempo de ejecución estimado es de **1 hora y media a 2 horas en total**. El script que procesa los datos y genera las imagenes tarda apenas unos segundos.
 
 **Salida esperada:**  
 
 1. **Tras ejecutar `PSO_PPO_Hybrid.py`:**
-   * Se creará un directorio `logs/` en la raíz del proyecto.
+   * Se creará un directorio `logs/` en la raíz del proyecto que contendrá archivos `.csv` con los registros en bruto para todos los experimentos de ablación y barridos.
 
-   * Contendrá archivos `.csv` con los registros en bruto (episodio, retorno poblacional, fitness del *gbest*, magnitud de velocidad y tiempos) para todos los experimentos de ablación y barridos.
-
-   * En la consola se imprimirá el progreso iteración a iteración detallando la semilla actual y el retorno medio.
+   * En la consola se imprimirá el progreso iteración a iteración detallando la semilla actual.
 
 2. **Tras ejecutar `plot_results.py`:**
-   * Se imprimirá en consola el análisis estadístico completo listo para copiar al informe (Prueba T de Welch, Eficiencia Muestral, Mejora Relativa, Estabilidad y Coste Computacional).
+   * En la consola se imprimirá el análisis estadístico completo.
 
-   * Se creará un directorio `figures/` que contendrá las gráficas en formato PDF/PNG listas para insertar en $\LaTeX$:
+   * Se creará un directorio `figures/` que contendrá las gráficas en formato PDF:
 
      * `1_curva_aprendizaje.pdf`: Comparativa de la eficiencia muestral y convergencia del híbrido frente a la línea base con bandas de varianza.
      * `2_dinamica_interna.pdf`: Evolución temporal de la velocidad de las partículas del PSO.
